@@ -9,7 +9,7 @@
         <link rel='stylesheet' href='${pageContext.request.contextPath}/resources/lib/css/estilo.css'>
         <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/js/chat.js"></script>
+        <!--script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/js/chat.js"></script-->
         <title>Chat genialongo :3</title>
     </head>
     <body>
@@ -22,7 +22,20 @@
                 </div>
                 <div class="title">Chat</div>
             </div>
-            <ul class="messages"></ul>
+            <ul class="messages">
+                <li class="message left appeared">
+                    <div class="avatar"></div>
+                    <div class="text_wrapper">
+                        <div class ="text">Hello perra!</div>
+                    </div>
+                </li>
+                <li class="message right appeared">
+                    <div class="avatar"></div>
+                    <div class="text_wrapper">
+                        <div class ="text">Se dice emilio!</div>
+                    </div>
+                </li>
+            </ul>
             <div class="bottom_wrapper clearfix">
                 <div class="message_input_wrapper">
                     <input class="message_input" placeholder="Type your message here..." />
@@ -41,4 +54,7 @@
             </li>
         </div>
     </body>
+    <script>
+        
+    </script>
 </html>
