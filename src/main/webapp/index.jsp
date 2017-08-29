@@ -1,3 +1,5 @@
+<%@page import="com.sv.udb.modelos.Respuestas"%>
+<%@page import="com.sv.udb.controladores.RespCtrl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +14,17 @@
         <!--script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/js/chat.js"></script-->
         <title>Chat genialongo :3</title>
     </head>
+    <%
+        session = request.getSession(true);
+        Object usuaActu = session.getAttribute("usuaActu");
+        if (usuaActu == null)
+        {
+            response.sendRedirect("login.jsp");
+        }
+    %> 
     <body>
+         <li><a href="menu.jsp"><h2>Menu</h2></a></li>
+        </ul>  
         <div class="chat_window">
             <div class="top_menu">
                 <div class="buttons">
@@ -23,6 +35,19 @@
                 <div class="title">Chat</div>
             </div>
             <ul class="messages">
+                <%
+                    for (Respuestas temp : new RespCtrl().cons())
+                    {      
+                %>
+                <li class="message left appeared">
+                    <div class="avatar"></div>
+                    <div class="text_wrapper">
+                        <div class="text"><%=temp.getMensResp()%></div>
+                    </div>
+                </li>    
+                <%
+                    }
+                %>
                 <li class="message left appeared">
                     <div class="avatar"></div>
                     <div class="text_wrapper">
