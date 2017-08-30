@@ -52,14 +52,14 @@ public class UsuariosCtrl {
      
      
     
-    public Usuarios cons(Integer codiTipo)
+    public Usuarios cons(Integer codiUsua)
     {
         Usuarios resp = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
         EntityManager em = emf.createEntityManager();
         try
         {
-            resp = em.find(Usuarios.class, codiTipo);
+            resp = em.find(Usuarios.class, codiUsua);
         }
         catch(Exception ex)
         {

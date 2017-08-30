@@ -135,7 +135,7 @@ public class Conversaciones implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sv.udb.modelos.Conversaciones[ codiConv=" + codiConv + " ]";
+        return "ir";
     }
     
 }

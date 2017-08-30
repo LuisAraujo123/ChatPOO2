@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Respuestas.findAll", query = "SELECT r FROM Respuestas r")
     , @NamedQuery(name = "Respuestas.findByCodiResp", query = "SELECT r FROM Respuestas r WHERE r.codiResp = :codiResp")
-    , @NamedQuery(name = "Respuestas.findConver", query = "SELECT r FROM Respuestas r WHERE r.codiConv = :codiConv")
+    , @NamedQuery(name = "Respuestas.findConver", query = "SELECT r FROM Respuestas r WHERE r.codiConv = :codiConv Order By r.fechHoraResp")
     , @NamedQuery(name = "Respuestas.findByFechHoraResp", query = "SELECT r FROM Respuestas r WHERE r.fechHoraResp = :fechHoraResp")})
 public class Respuestas implements Serializable {
 

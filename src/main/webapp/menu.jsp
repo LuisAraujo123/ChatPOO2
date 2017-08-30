@@ -21,7 +21,7 @@
     </head>
     <%
         session = request.getSession(true);
-        Object usuaActu = session.getAttribute("usuaActu");
+        Usuarios usuaActu = (Usuarios) session.getAttribute("usuaActu");
         if (usuaActu == null)
         {
             response.sendRedirect("login.jsp");
@@ -29,40 +29,42 @@
     %>
     <body>
         <div class="container">      
-         <div class="col-sm-12 chat_sidebar">
-    	 <div class="row">
-        <div id="custom-search-input">
-               <div class="input-group col-md-12">
-                  <input type="text" class="  search-query form-control" placeholder="Conversation" />
-                  <button class="btn btn-danger" type="button">
-                  <span class=" glyphicon glyphicon-search"></span>
-                  </button>
-               </div>
+            <div class="col-sm-12 chat_sidebar">
+                <div class="row">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="  search-query form-control" placeholder="Buscar conversación" />
+                            <button class="btn btn-danger" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <h1>${mensAler}</h1>
+                    <form method="POST" action="ConvServ">
+                        <div class="member_list">
+                            <ul class="list-unstyled">
+                                <%
+                                    for (Conversaciones temp : new ConvCtrl().cons()) {
+                                        if (usuaActu.equals(temp.getUsuaUno()) || usuaActu.equals(temp.getUsuaDos())) {
+                                %>
+                                <li class="left clearfix">                    
+                                    <div class="chat-body clearfix">
+                                        <div class="header_sec">
+                                            <input type="submit" class="btn orange-circle-button" name="ConvBton" value="<%=temp.getCodiConv()%>"/>
+                                            <strong class="primary-font"><%=temp.getUsuaUno().getNombUsua()%>, <%=temp.getUsuaDos().getNombUsua()%></strong> <strong class="pull-right">
+                                                <%=temp.getTempConv()%></strong>
+                                        </div>
+                                    </div>
+                                </li>  
+                                <%
+                                        }
+                                    }
+                                %>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
             </div>
-             
-              <div class="member_list">
-               <ul class="list-unstyled">
-            <%
-                for (Conversaciones temp : new ConvCtrl().cons()) 
-                 {
-            %>
-                  <li class="left clearfix">                    
-                     <div class="chat-body clearfix">
-                        <div class="header_sec">
-                           <strong class="primary-font"><%=temp.getUsuaUno().getNombUsua()%> ,<%=temp.getUsuaDos().getNombUsua()%></strong> <strong class="pull-right">
-                           <%=temp.getTempConv()     %></strong>
-                     </div>
-                        
-                     </div>
-                  </li>
-            <%                            
-                 }
-            %>
-            
-             
-         </div>
-         </div>
-      
         </div>
     </body>
 </html>

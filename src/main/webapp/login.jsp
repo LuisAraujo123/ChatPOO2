@@ -28,9 +28,12 @@
                     <input type="password" class="form-control input-sm chat-input" id="cont" name="cont"  placeholder="Contraseña" />
                     </br>
                     <div class="wrapper">
-                    <span class="group-btn">     
-                         <input type="submit" name="TipoBton" value="Ingresar" class="btn btn-sm btn-success" />
-                    </span>
+                        <span class="group-btn">     
+                             <input type="submit" name="TipoBton" value="Ingresar" class="btn btn-sm btn-success" />
+                        </span>
+                        <span class="group-btn">     
+                            <input type="submit" style='background-color: #3399ff;' name="TipoBton" value="Registrarse" class="btn btn-sm btn-success" />
+                        </span>
                     </div>
                     </div>
 

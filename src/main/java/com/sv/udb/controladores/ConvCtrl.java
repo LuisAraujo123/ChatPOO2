@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
  * @author Jose Lira
  */
 public class ConvCtrl {
-     public List<Conversaciones> cons()
+    public List<Conversaciones> cons()
     {
         List<Conversaciones> resp = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
@@ -24,6 +24,27 @@ public class ConvCtrl {
         try
         {
             resp = em.createNamedQuery("Conversaciones.findAll", Conversaciones.class).getResultList();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            em.close();
+            emf.close();            
+        }
+        return resp;
+    }
+    
+    public Conversaciones cons(Integer codiConv)
+    {
+        Conversaciones resp = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            resp = em.find(Conversaciones.class, codiConv);
         }
         catch(Exception ex)
         {

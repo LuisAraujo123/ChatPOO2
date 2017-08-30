@@ -35,40 +35,43 @@ public class LoginServ extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             boolean esValido = request.getMethod().equals("POST");
-            if(esValido)
-            {
-                String mens = "";
-                String CRUD = request.getParameter("TipoBton");
-                if(CRUD.equals("Ingresar"))
-                {
-                    String usua,cont;
-                    usua = request.getParameter("user");
-                    cont = request.getParameter("cont");
-                    Usuarios obje =  new UsuariosCtrl().login(usua);
-                    if(obje == null)
-                    {
-                        request.setAttribute("mensAler","Usuario o contraseña incorrectas");
-                        request.getRequestDispatcher("/login.jsp").forward(request, response);
-                    }
-                    else
-                    {
-                        System.out.println("si hay");
-                        if(obje.getContUsua().equals(cont))
-                        {
-                            request.setAttribute("mensAler",mens);
-                            HttpSession session = request.getSession(true);
-                            session.setAttribute("usuaActu", obje);
-                            request.getRequestDispatcher("/menu.jsp").forward(request, response);
-                        }
-                        else
-                        {
-                            request.setAttribute("mensAler","Usuario o contraseña incorrectas");
+            try {
+                if (esValido) {
+                    String mens = "";
+                    String CRUD = request.getParameter("TipoBton");
+                    if (CRUD.equals("Ingresar")) {
+                        String usua, cont;
+                        usua = request.getParameter("user");
+                        cont = request.getParameter("cont");
+                        Usuarios obje = new UsuariosCtrl().login(usua);
+                        if (obje == null) {
+                            request.setAttribute("mensAler", "Usuario o contraseña incorrectas");
                             request.getRequestDispatcher("/login.jsp").forward(request, response);
+                        } else {
+                            System.out.println("si hay");
+                            if (obje.getContUsua().equals(cont)) {
+                                request.setAttribute("mensAler", mens);
+                                HttpSession session = request.getSession(true);
+                                session.setAttribute("usuaActu", obje);
+                                request.getRequestDispatcher("/menu.jsp").forward(request, response);
+                            } else {
+                                request.setAttribute("mensAler", "Usuario o contraseña incorrectas");
+                                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                            }
                         }
+
+                    } else if (CRUD.equals("Registrarse")) {
+                        response.sendRedirect(request.getContextPath() + "/registrar_usuario.jsp");
                     }
-                    
                 }
+                
+            } catch (Exception ex)
+            {
+                System.err.println(ex.getMessage());
+                ex.printStackTrace();
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

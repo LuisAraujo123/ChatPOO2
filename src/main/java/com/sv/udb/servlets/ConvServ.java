@@ -5,23 +5,23 @@
  */
 package com.sv.udb.servlets;
 
-import com.sv.udb.controladores.UsuariosCtrl;
-import com.sv.udb.modelos.Usuarios;
+import com.sv.udb.controladores.ConvCtrl;
+import com.sv.udb.modelos.Conversaciones;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DanielWilfredo
+ * @author bernardo
  */
-@WebServlet(name = "UsuaServ", urlPatterns = {"/UsuaServ"})
-public class UsuaServ extends HttpServlet {
+@WebServlet(name = "ConvServ", urlPatterns = {"/ConvServ"})
+public class ConvServ extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,36 +37,16 @@ public class UsuaServ extends HttpServlet {
         boolean esValido = request.getMethod().equals("POST");
         if(esValido)
         {
-            String mens = "";
-            String CRUD = request.getParameter("TipoBton");
-            if(CRUD.equals("Registrar"))
-            {
-                Usuarios obje = new Usuarios();
-                String nomb=request.getParameter("nomb");
-                String email=request.getParameter("email");
-                String c1=request.getParameter("cont");
-                String c2=request.getParameter("cont2");
-                if(c1.equals(c2))
-                {
-                    obje.setNombUsua(nomb);
-                    obje.setMailUsua(email); 
-                    obje.setMailUsua(email); 
-                    obje.setContUsua(c1);                                               
-                    mens = new UsuariosCtrl().guar(obje) ? "Datos guardados exitosamente" : "Datos NO guardados";
-                    request.setAttribute("mensAler", mens);
-                    request.getRequestDispatcher("/registrar_usuario.jsp").forward(request, response);
-                }
-                else
-                {
-                    mens= new UsuariosCtrl().guar(obje) ? "Datos guardados exitosamente" : "Datos NO guardados // Las contraseñas son incorrectas";
-                    request.setAttribute("mensAler", mens);
-                    request.getRequestDispatcher("/registrar_usuario.jsp").forward(request, response);
-                }
-            }
-            else if(CRUD.equals("Regresar"))
-            {
-                response.sendRedirect(request.getContextPath() + "/login.jsp");
-            }
+            String codiConv = request.getParameter("ConvBton");
+            Conversaciones objeConv = new ConvCtrl().cons(Integer.parseInt(codiConv));
+            //request.setAttribute("mensAler", objeConv.getCodiConv());
+            HttpSession session = request.getSession(true);
+            session.setAttribute("convActu", objeConv);
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
+        else
+        {
+            response.sendRedirect(request.getContextPath() + "/menu.jsp");
         }
     }
 
@@ -110,4 +90,3 @@ public class UsuaServ extends HttpServlet {
     }// </editor-fold>
 
 }
-

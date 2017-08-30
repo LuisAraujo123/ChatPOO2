@@ -3,7 +3,6 @@
     Created on : 08-28-2017, 10:02:31 PM
     Author     : DanielWilfredo
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,48 +21,44 @@
         <br>
         <br>
         <br>
-        <br><form method="POST" action="UsuaServ">
-              <h1>${mensAler}</h1>
-            
-               <div class="container">
-        <div class="row centered-form">
-              <div class="panel panel-default">
-        		<div class="panel-heading">
-                            <center><h1>Registrar Usuario</h1></center> 
-			 			</div>
-			 			<div class="panel-body">
-			    		<form role="form">
-			    					<div class="form-group">
-			                <input type="text" name="nomb" id="nomb" class="form-control input-sm" placeholder="Nombres">
-			    					</div>
-
-			    			<div class="form-group">
-			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-			    			</div>
-
-			    			<div class="row">
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="password" name="cont" id="cont" class="form-control input-sm" placeholder="Password">
-			    					</div>
-			    				</div>
-                                                            <div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="password" name="cont2" id="cont2" class="form-control input-sm" placeholder="Confirm Password">
-			    					</div>
-			    				</div>
-			    			</div>
-			    			
-			    			<input type="submit" name="TipoBton" value="Registrar" class="btn btn-info btn-block">
-			    		
-			    					    	</div>
-	    		</div>
-       	
-    	
-    	</div>
-    </div>
-            
+        <h1 class="text-center">${mensAler}</h1>
+        <br>
+        <form method="POST" class='center-block' action="UsuaServ">
+            <div class="container">
+                <div class="row centered-form">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="form-group">
+                                <input type="submit" name="TipoBton" value="Regresar" class="btn btn-sm btn-success">
+                                <center><h1>Registrar Usuario</h1></center> 
+                            </div>                            
+                        </div>
+                        <div class="panel-body">
+                            <div role="form">
+                                <div class="form-group">
+                                    <input type="text" name="nomb" id="nomb" class="form-control input-sm" placeholder="Nombres">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="cont" id="cont" class="form-control input-sm" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="cont2" id="cont2" class="form-control input-sm" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" name="TipoBton" value="Registrar" class="btn btn-info btn-block">
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
         </form>
-     
     </body>
 </html>
