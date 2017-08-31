@@ -109,4 +109,9 @@
             cargar();   
         }
     </script>
+    <script>
+         $(document).ready(function(){
+             $("#respList").animate({ scrollTop: $('#respList')[0].scrollHeight}, 1000);
+         });
+    </script>
 </html>

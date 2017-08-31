@@ -22,7 +22,7 @@
             <form method="POST" action="LoginServ">
                 <div class="col-md-offset-4 col-md-5">
                     <div class="form-login">
-                    <h4></h4>
+                    <h4>Iniciar Sesion</h4>
                     <input type="text" class="form-control input-sm chat-input" id="user" name="user" placeholder="Usuario" />
                     </br>
                     <input type="password" class="form-control input-sm chat-input" id="cont" name="cont"  placeholder="Contraseña" />
