@@ -90,7 +90,6 @@
                     </div>
                 </div>
             </form>
-            <button class="btn orange-circle-button" onclick="cargar();" value="probar">Probar</button>
         </div>
         <div class="message_template">
             <li class="message">
