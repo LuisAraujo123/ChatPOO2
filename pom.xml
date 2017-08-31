@@ -8,6 +8,39 @@
     <packaging>war</packaging>
 
     <name>ChatPOO2</name>
+    
+        <developers>
+        <developer>
+            <id>Wilfredo Granados</id>
+            <email>xvwilito11@gmail.com</email>
+            <organization>Ricaldone</organization>
+            <organizationUrl>https://github.com/danielwilfredo</organizationUrl>
+            <roles>
+                <role>Java Developers</role>
+            </roles>
+            <timezone>-6:00</timezone>
+        </developer>
+        <developer>
+            <id>Luis Araujo</id>
+            <email></email>
+            <organization>Ricaldone</organization>
+            <organizationUrl></organizationUrl>
+            <roles>
+                <role>Java Developers</role>
+            </roles>
+            <timezone>-6:00</timezone>
+        </developer>
+        <developer>
+            <id>Emilio Ramirez</id>
+            <email></email>
+            <organization>Ricaldone</organization>
+            <organizationUrl></organizationUrl>
+            <roles>
+                <role>Java Developers</role>
+            </roles>
+            <timezone>-6:00</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
