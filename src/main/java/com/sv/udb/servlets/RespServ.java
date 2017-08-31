@@ -65,12 +65,12 @@ public class RespServ extends HttpServlet {
             }
             else
             {
-                response.sendRedirect(request.getContextPath() + "/login.jsp");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
         }
         else
         {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
     }
 

@@ -18,7 +18,6 @@
         <link rel='stylesheet' href='${pageContext.request.contextPath}/resources/lib/css/estilo2.css'>
         <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!--script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/js/chat.js"></script-->
         <title>Chat genialongo :3</title>
     </head>
     <%

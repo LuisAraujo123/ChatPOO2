@@ -9,12 +9,12 @@
 
 <html>
     <head>
-        <meta http-equiv="Refresh" content="10;index.jsp">
+        <!--meta http-equiv="Refresh" content="10;index.jsp"-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
         <link rel='stylesheet' href='${pageContext.request.contextPath}/resources/lib/css/estilo.css'>
         <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!--script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/js/chat.js"></script-->
+        <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>        
         <title>Chat genialongo :3</title>
     </head>
     <%
@@ -64,7 +64,7 @@
                     }
                 %>
             </div>
-            <ul class="messages">
+            <ul id="respList" class="messages">
                 <%
                     for (Respuestas temp : new RespCtrl().cons(convActu, usuaActu.getCodiUsua()))
                     {
@@ -90,6 +90,7 @@
                     </div>
                 </div>
             </form>
+            <button class="btn orange-circle-button" onclick="cargar();" value="probar">Probar</button>
         </div>
         <div class="message_template">
             <li class="message">
@@ -101,6 +102,12 @@
         </div>
     </body>
     <script>
-        
+        var wuju = setInterval(myTimer, 1000);
+        function cargar() {
+                $('#respList').load('prueba.jsp');
+            }
+        function myTimer() {
+            cargar();   
+        }
     </script>
 </html>
