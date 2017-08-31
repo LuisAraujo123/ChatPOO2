@@ -5,6 +5,7 @@
  */
 package com.sv.udb.controladores;
 
+import com.sv.udb.modelos.Conversaciones;
 import com.sv.udb.modelos.Usuarios;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -80,7 +81,7 @@ public class UsuariosCtrl {
         EntityManager em = emf.createEntityManager();
         try
         {
-            resp = em.createNamedQuery("Tipos.findAll", Usuarios.class).getResultList();
+            resp = em.createNamedQuery("Usuarios.findAll", Usuarios.class).getResultList();
         }
         catch(Exception ex)
         {

@@ -6,7 +6,9 @@
 package com.sv.udb.servlets;
 
 import com.sv.udb.controladores.ConvCtrl;
+import com.sv.udb.controladores.UsuariosCtrl;
 import com.sv.udb.modelos.Conversaciones;
+import com.sv.udb.modelos.Usuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -38,11 +40,31 @@ public class ConvServ extends HttpServlet {
         if(esValido)
         {
             String codiConv = request.getParameter("ConvBton");
-            Conversaciones objeConv = new ConvCtrl().cons(Integer.parseInt(codiConv));
-            //request.setAttribute("mensAler", objeConv.getCodiConv());
-            HttpSession session = request.getSession(true);
-            session.setAttribute("convActu", objeConv);
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            System.out.println(codiConv);
+            if (codiConv == null)
+            {
+                Integer codiUsua = Integer.parseInt(request.getParameter("InicBton"));
+                HttpSession session = request.getSession(true);
+                Usuarios usuaActu = (Usuarios)session.getAttribute("usuaActu");
+                Conversaciones objeConv = new Conversaciones();
+                objeConv.setUsuaUno(usuaActu);
+                objeConv.setUsuaDos(new UsuariosCtrl().cons(codiUsua));
+                objeConv.setTempConv(new java.util.Date());
+                if (new ConvCtrl().guar(objeConv))
+                {
+                    request.setAttribute("mensAler", " - Nueva conversación agregada");
+                    request.getRequestDispatcher("/menu.jsp").forward(request, response);
+                    
+                }
+            }
+            else
+            {
+                Conversaciones objeConv = new ConvCtrl().cons(Integer.parseInt(codiConv));
+                //request.setAttribute("mensAler", objeConv.getCodiConv());
+                HttpSession session = request.getSession(true);
+                session.setAttribute("convActu", objeConv);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         }
         else
         {

@@ -9,7 +9,7 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Refresh" content="10;index.jsp">
         <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
         <link rel='stylesheet' href='${pageContext.request.contextPath}/resources/lib/css/estilo.css'>
         <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
@@ -32,7 +32,6 @@
                 response.sendRedirect("menu.jsp");
             }
         }
-        
     %> 
     <body>
         <li><a href="menu.jsp"><h2>Menu</h2></a></li>

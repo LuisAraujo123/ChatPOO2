@@ -16,6 +16,37 @@ import javax.persistence.Persistence;
  * @author Jose Lira
  */
 public class ConvCtrl {
+    
+    public boolean guar(Conversaciones obje)
+    {
+        boolean resp = false;
+        EntityManagerFactory emf = 
+                Persistence.createEntityManagerFactory("POOPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        try
+        {
+            em.persist(obje);
+            tx.commit();
+            resp = true;
+        }
+        catch(Exception ex)
+        {
+            if(tx.isActive())
+            {
+                tx.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally
+        {
+            em.close();
+            emf.close();            
+        }
+        return resp;
+    }
+    
     public List<Conversaciones> cons()
     {
         List<Conversaciones> resp = null;
@@ -57,7 +88,4 @@ public class ConvCtrl {
         }
         return resp;
     }
-
-
-
 }

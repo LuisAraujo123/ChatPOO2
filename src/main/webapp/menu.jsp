@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.sv.udb.controladores.UsuariosCtrl"%>
 <%@page import="com.sv.udb.controladores.ConvCtrl"%>
 <%@page import="com.sv.udb.modelos.Conversaciones"%>
 <%@page import="com.sv.udb.modelos.Usuarios"%>
@@ -28,6 +30,7 @@
         }
     %>
     <body>
+        <li><a href="login.jsp"><h3>Salir</h3></a></li>
         <div class="container">      
             <div class="col-sm-12 chat_sidebar">
                 <div class="row">
@@ -39,13 +42,25 @@
                             </button>
                         </div>
                     </div>
-                    <h1>${mensAler}</h1>
                     <form method="POST" action="ConvServ">
+                        <h4>Conversaciones${mensAler}</h4>
                         <div class="member_list">
                             <ul class="list-unstyled">
                                 <%
-                                    for (Conversaciones temp : new ConvCtrl().cons()) {
+                                    UsuariosCtrl usuaCtrl = new UsuariosCtrl();
+                                    List<Conversaciones> conv = new ConvCtrl().cons();
+                                    List<Usuarios> usuaList = usuaCtrl.cons();
+                                    usuaList.remove(usuaActu);
+                                    for (Conversaciones temp : conv) {
                                         if (usuaActu.equals(temp.getUsuaUno()) || usuaActu.equals(temp.getUsuaDos())) {
+                                            if (usuaActu.equals(temp.getUsuaUno()))
+                                            {
+                                                usuaList.remove(temp.getUsuaDos());
+                                            }
+                                            else if (usuaActu.equals(temp.getUsuaDos()))
+                                            {
+                                                usuaList.remove(temp.getUsuaUno());
+                                            }
                                 %>
                                 <li class="left clearfix">                    
                                     <div class="chat-body clearfix">
@@ -58,6 +73,27 @@
                                 </li>  
                                 <%
                                         }
+                                    }
+                                %>
+                            </ul>
+                        </div>
+                        <h4>Usuarios sin conversar</h4>
+                        <div class="member_list">
+                            <ul class="list-unstyled">
+                                <%
+                                    for (Usuarios temp : usuaList)
+                                    {
+                                %>
+                                <li class="left clearfix">                    
+                                    <div class="chat-body clearfix">
+                                        <div class="header_sec">
+                                            <input type="submit" class="btn orange-circle-button" name="InicBton" value="<%=temp.getCodiUsua()%>"/>
+                                            <strong class="primary-font"><%=temp.getNombUsua()%>, <%=temp.getMailUsua()%></strong> <strong class="pull-right">
+                                                Fecha no disponible porque es ahora :)</strong>
+                                        </div>
+                                    </div>
+                                </li>  
+                                <%
                                     }
                                 %>
                             </ul>
